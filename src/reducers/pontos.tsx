@@ -415,9 +415,7 @@ export const locationsArray: Locations = [
   },
 
 
-]
-
-
+];
 
 
 export function locationsReducer(state: Locations, action: DispatchAction): Locations {
