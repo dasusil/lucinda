@@ -2,7 +2,7 @@ import { Footer } from "Components/Footer";
 import { Logo } from "Components/Logo";
 import { Navbar } from "Components/Navbar";
 import { Lato, MuseoModerno } from "next/font/google";
-import { Dispatch, useReducer, useState } from "react";
+import { Dispatch, useEffect, useReducer, useState } from "react";
 import { Cities, DispatchAction, locationsArray, locationsReducer } from "reducers/pontos";
 
 type ButtonProps = {
@@ -35,6 +35,10 @@ function Button({ label, selected, className, dispatchFn, action, setSelected }:
 export default function Coleta() {
   const [locations, setLocations] = useReducer(locationsReducer, locationsArray);
   const [selected, setSelected] = useState('todos');
+
+  useEffect(() => {
+    console.log(locations);
+  }, [locations]);
 
   return (
     <>
@@ -102,8 +106,8 @@ export default function Coleta() {
           </div>
 
           <div className="flex flex-1 gap-8 mt-10 flex-wrap w-full">
-            {locations.map(({ address, city, name, phone, site, observations }) => (
-              <div className={`${lato.className} tracking-wide text-lg border-2 rounded-lg w-[30%] py-5 px-4`} key={address}>
+            {locations.map(({ address, city, name, phone, site, observations }, index) => (
+              <div className={`${lato.className} tracking-wide text-lg border-2 rounded-lg w-[30%] py-5 px-4`} key={`${address}-${index}`}>
                 <p className={`${museo.className} text-xl mb-8 border-b-2 border-cgreen`}>
                   {name}
                 </p>

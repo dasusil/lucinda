@@ -1,4 +1,3 @@
-import { ClassificationType } from "typescript";
 
 export type Locations = {
   city: Cities;
@@ -413,13 +412,10 @@ export const locationsArray: Locations = [
     address: "Rua Do Comercio, 127 - Box 01 E 03 - Bairro Centro - SP, 09400-200",
     observations: "Recebemos celulares, carregadores, fones de ouvido, pilhas, baterias e produtos de telefonia em geral.",
   },
-
-
 ];
 
 
 export function locationsReducer(state: Locations, action: DispatchAction): Locations {
-  
   switch(action.type) {
     case Cities.Diadema:
       return locationsArray.filter((actualState) => actualState.city === Cities.Diadema);
